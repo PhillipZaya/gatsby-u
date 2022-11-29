@@ -7,7 +7,8 @@ const Images = () => {
     <Wrapper>
     <article>
     <h4>constrained / default</h4>
-    <StaticImage src='../assets/images/recipe-1.jpeg' alt='food'
+    <StaticImage src='../assets/images/recipe-1.jpeg'
+    alt='food'
     placeholder='tracedSVG'
     layout='constrained'
     className='example-img'
@@ -17,7 +18,8 @@ const Images = () => {
 
     <article>
     <h4>fixed</h4>
-    <StaticImage src='../assets/images/recipe-1.jpeg' alt='food'
+    <StaticImage src='../assets/images/recipe-1.jpeg'
+    alt='food'
     placeholder='blurred'
     layout='fixed'
     width={200}
@@ -28,7 +30,8 @@ const Images = () => {
 
     <article>
     <h4>fullWidth</h4>
-    <StaticImage src='../assets/images/recipe-1.jpeg' alt='food'
+    <StaticImage src='../assets/images/recipe-1.jpeg'
+    alt='food'
     placeholder='dominantColor'
     layout='fullWidth'
     className='example-img'
