@@ -1,17 +1,18 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import {StaticImage} from 'gatsby-plugin-image'
-import {Link} from 'gatsby'
+import {graphql, Link} from 'gatsby'
+import RecipesList from '../components/RecipesList'
 
-const About = () => {
+const About = ({ data:{allContentfulRecipe:{nodes:recipes}}}) => {
   return (
     <Layout>
       <main className='page'>
         <section className='about-page'>
           <article>
             <h2>I'm baby coloring book poke taxidermy</h2>
-            <p>The Pulitzer Prize-winning, Booker-longlisted, bestselling author returns to her beloved heroine Lucy Barton in a luminous novel about love, loss, and the family secrets that can erupt and bewilder us at any point in life</p>
-            <p>Lucy Barton is a successful writer living in New York, navigating the second half of her life as a recent widow and parent to two adult daughters. A surprise encounter leads her to reconnect with William, her first husband - and longtime, on-again-off-again friend and confidante. Recalling their college years, the birth of their daughters.</p>
+            <p>heroine Lucy Barton in a luminous novel about love, loss, and the family secrets that can erupt and bewilder us at any point in life</p>
+            <p>fe as a recent widow and parent to two adult daughters. A surprise encounter leads her to reconnect with William, her first husband </p>
             <Link to='/contact' className='btn'>contact</Link>
           </article>
           <StaticImage
@@ -20,9 +21,31 @@ const About = () => {
           className='about-img'
           placeholder='blurred'/>
         </section>
+        <section className='featured-recipes'>
+          <h5>Look at this Awesomesouce!</h5>
+          <RecipesList recipes={recipes} />
+        </section>
       </main>
     </Layout>
   )
 }
 
+export const query = graphql`
+{
+  allContentfulRecipe (
+    sort: {fields: title, order: ASC}
+    filter: {featured: {eq: true}}
+  ){
+    nodes {
+      id
+      title
+      cookTime
+      prepTime
+      image {
+        gatsbyImageData(layout: CONSTRAINED, placeholder: BLURRED)
+      }
+    }
+  }
+}
+`
 export default About

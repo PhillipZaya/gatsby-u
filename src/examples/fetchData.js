@@ -2,9 +2,9 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
 const getData = graphql`
- query {
+ {
   site{
-    info: siteMetadata {
+    siteMetadata {
       author
     description
       simpleData
@@ -25,7 +25,7 @@ const getData = graphql`
 const FetchData = () => {
     const {
         site: {
-            info: {title},
+            siteMetadata: {title},
         },
     } = useStaticQuery(getData)
 
@@ -34,10 +34,23 @@ const FetchData = () => {
     // const data = useStaticQuery(getData);
     return (
     <div>
-        {/* <h2>Name: {data.site.info.person.name}</h2> */}
+        {/* <h2>Name: {data.site.siteMetadata.person.name}</h2> */}
         <h2>site title is: {title}</h2>
     </div>
   )
 }
 
 export default FetchData
+
+
+// A way to display 2 items of data.
+// <div>
+// {data.site.siteMetadata.complexData.map((item,index) => {
+// return (
+// <p key={index}>
+// {item.name}:{item.age}
+// </p> )})}
+// </div>
+
+// adding alias example:
+// info:siteMetadata
